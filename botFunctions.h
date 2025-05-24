@@ -22,5 +22,15 @@ void call_discord_api(const char *botToken) {
 
     //build out header request
     headers = curl_slist_append(headers, authHeader);
-    headers = curl_slist_append(headers, "Content-Type: ");
+    headers = curl_slist_append(headers, "User Agent: DiscordBot(curl, C)");
+    headers = curl_slist_append(headers, "Content-Type: application/json");
+
+    curl_easy_setopt(curl, CURLOPT_URL, "https://discord.com/api/v10/users/@me");
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+    curl_easy_perform(curl);
+    curl_easy_cleanup(curl);
+    curl_slist_free_all(headers);
+
 }
+
