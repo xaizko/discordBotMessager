@@ -1,2 +1,3 @@
-gcc discordo_clone.c -o discordo_clone \
-    -lcurl -lwebsockets -ljansson -lncurses -lssl -lcrypto -lpthread
+all:
+	gcc -Wall -Wextra -O2 receive.c -o discord_client -lwebsockets -lcurl -ljansson -lssl -lcrypto
+
